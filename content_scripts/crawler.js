@@ -23,12 +23,14 @@ if (!window.scriptHasRun) {
 
     if (message.command === "crawl") {
       resourceNodes.forEach(node => {
+        // Fetch the href to get the actual download URL
         fetch(node.href).then(res => {
           // Content script can't access downloads API -> send msg to background script
           browser.runtime.sendMessage({
             command: "download",
             url: res.url,
-            ISISFilename: message.useISISFilename ? node.children[1].textContent : null,
+            // If checkbox was ticked parse the ISIS filename from DOM through the children
+            ISISFilename: message.useISISFilename ? node.children[1].firstChild.textContent : null,
           })
         })
       })
