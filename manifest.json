@@ -1,15 +1,15 @@
 {
   "manifest_version": 2,
-  "name": "TU Berlin Course Crawler",
+  "name": "TU Berlin ISIS Course Crawler",
   "version": "1.0",
-  "description": "Downloads all resources that have been uploaded to an ISIS course.",
+  "description": "Crawls a TU Berlin ISIS course for available resources (PDF documents, etc.) and allows the user to download them all at once.",
   "icons": {
     "48": "./icons/crawler-48.png"
   },
   "permissions": ["activeTab", "downloads"],
   "browser_action": {
     "default_icon": "icons/crawler-32.png",
-    "default_title": "ISIS Crawler",
+    "default_title": "TU Berlin ISIS Course Crawler",
     "default_popup": "popup/index.html"
   },
   "background": {
