@@ -25,7 +25,11 @@ if (!window.scriptHasRun) {
       resourceNodes.forEach(node => {
         fetch(node.href).then(res => {
           // Content script can't access downloads API -> send msg to background script
-          browser.runtime.sendMessage({ command: "download", url: res.url })
+          browser.runtime.sendMessage({
+            command: "download",
+            url: res.url,
+            ISISFilename: message.useISISFilename ? node.children[1].textContent : null,
+          })
         })
       })
 

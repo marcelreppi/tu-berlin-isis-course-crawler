@@ -31,6 +31,7 @@ function listenForCrawl() {
 
     browser.tabs.sendMessage(activeTab.id, {
       command: "crawl",
+      useISISFilename: document.querySelector("#isis-filename-check").checked,
     })
 
     preventCrawl = true

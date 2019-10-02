@@ -7,31 +7,43 @@
   </head>
 
 <body>
-  <div class="title">
-    TU Berlin Course Crawler
-    <img class="title-icon" src="../icons/crawler-32.png">
-  </div>
-
-  <div id="popup-content" class="content-container">
-    <div class="resource-info">
-      <div id="resource-info-loading">Scanning for resources...</div>
-      <div id="resource-info-single" class="hidden">There is <span class="resource-info-number">1</span> resource available for download.</div>
-      <div id="resource-info-multiple" class="hidden">There are <span class="resource-info-number" id="resource-info-number"></span> resources available for download.</div>
+  <div class="container">
+   <div class="title">
+      TU Berlin Course Crawler
+      <img class="title-icon" src="../icons/crawler-32.png">
     </div>
-       
-    <div class="download-info">Click the button below to download all available resources from this ISIS course.</div>
-    <div id="crawl-button">Download</div>
-  </div>
 
-  <div id="error-content" class="content-container hidden">
-    <p>Can't download resources here...</p>
-    <div>Make sure you...</div>
-    <ul>
-      <li>are on the TU Berlin ISIS page</li>
-      <li>are logged in</li>
-      <li>have the course page open in this tab</li>
-    </ul>
+    <div id="popup-content" class="content-container">
+      <div class="resource-info">
+        <div id="resource-info-loading">Scanning for resources...</div>
+        <div id="resource-info-single" class="hidden">There is <span class="resource-info-number">1</span> resource available for download.</div>
+        <div id="resource-info-multiple" class="hidden">There are <span class="resource-info-number" id="resource-info-number"></span> resources available for download.</div>
+      </div>
+        
+      <div class="download-info">Click the button below to download all available resources from this ISIS course.</div>
+      <div>
+        <label><input type="checkbox" id="isis-filename-check"><span class="checkbox-label">Use ISIS file name as actual file name</span></label>
+      </div>
+      
+      <div id="crawl-button">Download</div>
+    </div>
+
+    <div id="error-content" class="content-container hidden">
+      <p>Can't download resources here...</p>
+      <div>Make sure you...</div>
+      <ul>
+        <li>are on the TU Berlin ISIS page</li>
+        <li>are logged in</li>
+        <li>have the course page open in this tab</li>
+      </ul>
+    </div>
+
+    <div class="footer">
+      <span>Inofficial Plugin made by <a href="https://twitter.com/marcelreppi">marcelreppi</a></span>
+      <span><a href="https://github.com/marcelreppi/tu-berlin-course-crawler">GitHub</a></span>
+    </div> 
   </div>
+  
 
   <script src="index.js"></script>
 </body>
