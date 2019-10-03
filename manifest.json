@@ -9,11 +9,17 @@
   },
   "permissions": ["activeTab", "downloads"],
   "browser_action": {
-    "default_icon": "icons/crawler-32.png",
+    "default_icon": "./icons/crawler-32.png",
     "default_title": "TU Berlin ISIS Course Crawler",
-    "default_popup": "popup/index.html"
+    "default_popup": "./popup/index.html"
   },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["./browser-polyfill.js", "./content_scripts/crawler.js"]
+    }
+  ],
   "background": {
-    "scripts": ["background_scripts/downloader.js"]
+    "scripts": ["./browser-polyfill.js", "./background_scripts/downloader.js"]
   }
 }
