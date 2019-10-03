@@ -1,13 +1,20 @@
 browser.runtime.onMessage.addListener(message => {
   if (message.command === "download") {
-    let filename = null
+    const urlParts = message.url.split("/")
+    let filename = urlParts[urlParts.length - 1]
+    const filenameParts = filename.split(".")
+    const fileType = filenameParts[filenameParts.length - 1]
 
-    if (message.ISISFilename) {
-      const urlParts = message.url.split("/")
-      const originalFilename = urlParts[urlParts.length - 1]
-      const filenameParts = originalFilename.split(".")
-      const fileType = filenameParts[filenameParts.length - 1]
+    if (message.useISISFilename) {
       filename = `${message.ISISFilename}.${fileType}`
+    }
+
+    if (message.prependCourseToFilename) {
+      filename = `${message.courseName}_${filename}`
+    }
+
+    if (message.prependCourseShortcutToFilename) {
+      filename = `${message.courseShortcut}_${filename}`
     }
 
     browser.downloads.download({

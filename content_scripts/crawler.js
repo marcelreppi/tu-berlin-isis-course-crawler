@@ -22,6 +22,16 @@ if (!window.scriptHasRun) {
     }
 
     if (message.command === "crawl") {
+      const courseName = document
+        .querySelector(".page-header-headings")
+        .children[0].textContent.trim()
+        .replace(/\\|\/|:|\*|\?|"|<|>|\|/gi, "")
+
+      const courseShortcut = document
+        .querySelector("a[aria-current='page']")
+        .textContent.trim()
+        .replace(/\\|\/|:|\*|\?|"|<|>|\|| /gi, "_")
+
       resourceNodes.forEach(node => {
         // Fetch the href to get the actual download URL
         fetch(node.href).then(res => {
@@ -29,8 +39,12 @@ if (!window.scriptHasRun) {
           browser.runtime.sendMessage({
             command: "download",
             url: res.url,
-            // If checkbox was ticked parse the ISIS filename from DOM through the children
-            ISISFilename: message.useISISFilename ? node.children[1].firstChild.textContent : null,
+            ISISFilename: node.children[1].firstChild.textContent,
+            useISISFilename: message.useISISFilename,
+            courseName: courseName,
+            prependCourseToFilename: message.prependCourseToFilename,
+            courseShortcut: courseShortcut,
+            prependCourseShortcutToFilename: message.prependCourseShortcutToFilename,
           })
         })
       })
