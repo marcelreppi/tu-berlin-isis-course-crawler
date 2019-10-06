@@ -23,7 +23,7 @@ Alternatively...
 
 ### How to install the plugin for **Chrome**
 
-1. Click [here](https://chrome.google.com/webstore/detail/tu-berlin-isis-course-cra/bmmpficfjmfkknimfadpkdddodcccidf) to visit the plugin's chrome webstore page
+1. Click [here](http://bit.ly/2MfxMzs) to visit the plugin's chrome webstore page
 2. Click "Add to Chrome" and then "Add extension"
 
 ----
