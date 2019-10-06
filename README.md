@@ -34,3 +34,5 @@ Alternatively...
 2. Visit a course page of your choice
 3. Click the TU Berlin ISIS icon in the extension bar of your browser
 3. Click on "Download" and let the magic begin!
+
+![Preview](https://raw.githubusercontent.com/marcelreppi/tu-berlin-isis-course-crawler/master/screenshots/regular.png "Plugin Preview")
