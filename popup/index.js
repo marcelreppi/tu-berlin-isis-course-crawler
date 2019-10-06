@@ -9,16 +9,15 @@ function getActiveTab() {
 }
 
 function checkURL() {
-  const { url } = activeTab
-  if (!url.startsWith("https://isis.tu-berlin.de/course/view.php?id=")) {
-    showWrongPageContent()
-  }
+  return activeTab.url.startsWith("https://isis.tu-berlin.de/course/view.php?id=")
 }
 
 function scanForDocuments() {
-  browser.tabs.sendMessage(activeTab.id, {
-    command: "scan",
-  })
+  browser.tabs
+    .sendMessage(activeTab.id, {
+      command: "scan",
+    })
+    .catch(showErrorContent)
 }
 
 let preventCrawl = false
@@ -26,15 +25,17 @@ function listenForCrawl() {
   document.querySelector("#crawl-button").addEventListener("click", e => {
     if (preventCrawl) return
 
-    document.querySelector("#crawl-button").classList.add("disabled")
+    document.querySelector("#crawl-button").disabled = true
 
-    browser.tabs.sendMessage(activeTab.id, {
-      command: "crawl",
-      useISISFilename: document.querySelector("#isis-filename-check").checked,
-      prependCourseToFilename: document.querySelector("#course-filename-check").checked,
-      prependCourseShortcutToFilename: document.querySelector("#course-short-filename-check")
-        .checked,
-    })
+    browser.tabs
+      .sendMessage(activeTab.id, {
+        command: "crawl",
+        useISISFilename: document.querySelector("#isis-filename-check").checked,
+        prependCourseToFilename: document.querySelector("#course-filename-check").checked,
+        prependCourseShortcutToFilename: document.querySelector("#course-short-filename-check")
+          .checked,
+      })
+      .catch(showErrorContent)
 
     preventCrawl = true
   })
@@ -47,12 +48,18 @@ function showWrongPageContent() {
 
 function showErrorContent(error) {
   document.querySelector("#popup-content").classList.add("hidden")
+  document.querySelector("#wrong-page-content").classList.add("hidden")
   document.querySelector("#error-content").classList.remove("hidden")
   console.error(`Failed to execute crawling script: ${error.message}`)
 }
 
 getActiveTab().then(() => {
-  checkURL()
+  const isISISCourseURL = checkURL()
+  if (!isISISCourseURL) {
+    showWrongPageContent()
+    return
+  }
+
   scanForDocuments()
   listenForCrawl()
 })
@@ -68,7 +75,7 @@ browser.runtime.onMessage.addListener(message => {
       document.querySelector("#resource-info-multiple").classList.remove("hidden")
 
       if (message.numberOfResources === 0) {
-        document.querySelector("#crawl-button").classList.add("disabled")
+        document.querySelector("#crawl-button").disabled = true
         preventCrawl = true
       }
     }

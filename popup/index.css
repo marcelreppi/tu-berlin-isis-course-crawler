@@ -39,6 +39,7 @@ html, body {
   padding: 10px 0px;
   margin-top: 10px;
   border-radius: 5px;
+  border: 0;
   background-color: #c50e20;
   color: white;
   font-weight: bold;
@@ -52,13 +53,10 @@ html, body {
   text-decoration: underline;
 }
 
-.disabled {
-  background-color: #a8a8a8 !important;
-}
-
-.disabled:hover {
-  cursor: default !important;
-  text-decoration: none !important;
+#crawl-button:disabled {
+  background-color: #a8a8a8;
+  cursor: default;
+  text-decoration: none;
 }
 
 .resource-info {
