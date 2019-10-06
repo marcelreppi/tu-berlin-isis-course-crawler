@@ -12,7 +12,7 @@ This browser plugin will save you a lot of time! It will scan the ISIS course fo
 
 ### How to install the plugin for **Firefox**
 
-1. Download the plugin [here](https://github.com/marcelreppi/tu-berlin-isis-course-crawler/blob/master/dist/tu_berlin_isis_course_crawler-1.3-fx.xpi?raw=true) or check the [dist](https://github.com/marcelreppi/tu-berlin-isis-course-crawler/tree/master/dist) directory
+1. Download the plugin [here](http://bit.ly/2APYmty) or check the [dist](https://github.com/marcelreppi/tu-berlin-isis-course-crawler/tree/master/dist) directory
 2. Execute the file with Firefox
 
 Alternatively...
