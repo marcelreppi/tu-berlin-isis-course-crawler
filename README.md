@@ -10,20 +10,21 @@ This browser plugin will save you a lot of time! It will scan the ISIS course fo
 
 ## Installation
 
-### How to install the plugin for Firefox
+### How to install the plugin for **Firefox**
 
-1. Download the plugin from the [dist](https://github.com/marcelreppi/tu-berlin-isis-course-crawler/tree/master/dist) directory or just click [here](https://github.com/marcelreppi/tu-berlin-isis-course-crawler/blob/master/dist/tu_berlin_isis_course_crawler-1.2-fx.xpi?raw=true)
+1. Download the plugin [here](https://github.com/marcelreppi/tu-berlin-isis-course-crawler/blob/master/dist/tu_berlin_isis_course_crawler-1.3-fx.xpi?raw=true) or check the [dist](https://github.com/marcelreppi/tu-berlin-isis-course-crawler/tree/master/dist) directory
 2. Execute the file with Firefox
-3. Alternatively, you can type "about:addons" into the URL bar, click on the dropdown menu with the settings icon, click "Install Add-on From File..." and select the .xpi file
 
-### How to install the plugin for Chrome
+Alternatively...
 
-1. Download the source code [here](https://github.com/marcelreppi/tu-berlin-isis-course-crawler/archive/master.zip) (zip file)
-2. Extract the folder in a directory of your choice
-3. Open Chrome and type "chrome://extensions/" into the URL bar
-4. Turn on developer mode in the top right corner
-5. Click "Load unpacked"
-6. Select the folder of the extension
+1. Type "about:addons" into the URL bar
+2. Click on the dropdown menu with the settings icon
+3. Click "Install Add-on From File..." and select the .xpi file
+
+### How to install the plugin for **Chrome**
+
+1. Click [here](https://chrome.google.com/webstore/detail/tu-berlin-isis-course-cra/bmmpficfjmfkknimfadpkdddodcccidf) to visit the plugin's chrome webstore page
+2. Click "Add to Chrome" and then "Add extension"
 
 ----
 
