@@ -80,11 +80,27 @@ html, body {
 .footer {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-top: 30px;
   font-size: 10px;
   width: 100%;
   font-weight: 500;
   color: #8f8f8f;
+}
+
+.footer-right-section {
+  display: flex;
+  align-items: center;
+}
+
+.info-icon {
+  width: 16px;
+  height: 16px;
+  margin-left: 10px;
+}
+
+.info-icon:hover {
+  cursor: pointer;
 }
 
 .hidden {

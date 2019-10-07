@@ -1,54 +1,100 @@
+/* eslint-disable no-inner-declarations */
+
 if (!window.scriptHasRun) {
   // Make sure script only runs once!
   window.scriptHasRun = true
 
+  const sanitizeFilename = (filename, connectingString = "") => {
+    return filename.trim().replace(/\\|\/|:|\*|\?|"|<|>|\|/gi, connectingString)
+  }
+
+  function scanForResources(message) {
+    resourceNodes = []
+    document.querySelectorAll("a").forEach(node => {
+      if (node.href.startsWith("https://isis.tu-berlin.de/mod/resource/view.php?id=")) {
+        node.isResource = true
+        resourceNodes.push(node)
+        return
+      }
+
+      if (node.href.startsWith("https://isis.tu-berlin.de/mod/folder/view.php?id=")) {
+        node.isFolder = true
+        resourceNodes.push(node)
+        return
+      }
+    })
+
+    browser.runtime.sendMessage({
+      command: "scan-result",
+      numberOfResources: resourceNodes.length,
+    })
+  }
+
+  async function crawlResources(message) {
+    const courseName = sanitizeFilename(
+      document.querySelector(".page-header-headings").children[0].textContent
+    )
+
+    const courseShortcut = sanitizeFilename(
+      document.querySelector("a[aria-current='page']").textContent,
+      "_"
+    )
+
+    for (let i = 0; i < resourceNodes.length; i++) {
+      const node = resourceNodes[i]
+
+      // Fetch the href to get the actual download URL
+      const res = await fetch(node.href)
+
+      if (node.isResource) {
+        // Content script can't access downloads API -> send msg to background script
+        browser.runtime.sendMessage({
+          command: "download",
+          url: res.url,
+          ISISFilename: sanitizeFilename(node.children[1].firstChild.textContent),
+          useISISFilename: message.useISISFilename,
+          courseName: courseName,
+          prependCourseToFilename: message.prependCourseToFilename,
+          courseShortcut: courseShortcut,
+          prependCourseShortcutToFilename: message.prependCourseShortcutToFilename,
+        })
+        continue
+      }
+
+      if (node.isFolder) {
+        const body = await res.text()
+        const parser = new DOMParser()
+        const resHTML = parser.parseFromString(body, "text/html")
+        const downloadIDTag = resHTML.querySelector("input[name='id']")
+
+        if (downloadIDTag === null) continue
+
+        const downloadURL = `https://isis.tu-berlin.de/mod/folder/download_folder.php?id=${downloadIDTag.getAttribute(
+          "value"
+        )}`
+        browser.runtime.sendMessage({
+          command: "download-folder",
+          url: downloadURL,
+          folderName: sanitizeFilename(node.children[1].firstChild.textContent),
+          courseName: courseName,
+          prependCourseToFilename: message.prependCourseToFilename,
+          courseShortcut: courseShortcut,
+          prependCourseShortcutToFilename: message.prependCourseShortcutToFilename,
+        })
+      }
+    }
+  }
+
   let resourceNodes = []
 
-  browser.runtime.onMessage.addListener(message => {
+  browser.runtime.onMessage.addListener(async message => {
     if (message.command === "scan") {
-      resourceNodes = []
-      document.querySelectorAll("a").forEach(node => {
-        if (node.href.startsWith("https://isis.tu-berlin.de/mod/resource/view.php?id=")) {
-          resourceNodes.push(node)
-        }
-      })
-
-      browser.runtime.sendMessage({
-        command: "scan-result",
-        numberOfResources: resourceNodes.length,
-      })
-
+      scanForResources(message)
       return
     }
 
     if (message.command === "crawl") {
-      const courseName = document
-        .querySelector(".page-header-headings")
-        .children[0].textContent.trim()
-        .replace(/\\|\/|:|\*|\?|"|<|>|\|/gi, "")
-
-      const courseShortcut = document
-        .querySelector("a[aria-current='page']")
-        .textContent.trim()
-        .replace(/\\|\/|:|\*|\?|"|<|>|\|| /gi, "_")
-
-      resourceNodes.forEach(node => {
-        // Fetch the href to get the actual download URL
-        fetch(node.href).then(res => {
-          // Content script can't access downloads API -> send msg to background script
-          browser.runtime.sendMessage({
-            command: "download",
-            url: res.url,
-            ISISFilename: node.children[1].firstChild.textContent,
-            useISISFilename: message.useISISFilename,
-            courseName: courseName,
-            prependCourseToFilename: message.prependCourseToFilename,
-            courseShortcut: courseShortcut,
-            prependCourseShortcutToFilename: message.prependCourseShortcutToFilename,
-          })
-        })
-      })
-
+      await crawlResources(message)
       return
     }
   })

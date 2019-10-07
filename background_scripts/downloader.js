@@ -21,5 +21,24 @@ browser.runtime.onMessage.addListener(message => {
       url: message.url,
       filename,
     })
+    return
+  }
+
+  if (message.command === "download-folder") {
+    let filename = `${message.folderName}.zip`
+
+    if (message.prependCourseToFilename) {
+      filename = `${message.courseName}_${filename}`
+    }
+
+    if (message.prependCourseShortcutToFilename) {
+      filename = `${message.courseShortcut}_${filename}`
+    }
+
+    browser.downloads.download({
+      url: message.url,
+      filename,
+    })
+    return
   }
 })

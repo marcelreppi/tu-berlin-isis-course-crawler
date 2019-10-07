@@ -20,10 +20,9 @@ function scanForDocuments() {
     .catch(showErrorContent)
 }
 
-let preventCrawl = false
 function listenForCrawl() {
   document.querySelector("#crawl-button").addEventListener("click", e => {
-    if (preventCrawl) return
+    if (document.querySelector("#crawl-button").disabled) return
 
     document.querySelector("#crawl-button").disabled = true
 
@@ -36,8 +35,6 @@ function listenForCrawl() {
           .checked,
       })
       .catch(showErrorContent)
-
-    preventCrawl = true
   })
 }
 
@@ -53,17 +50,6 @@ function showErrorContent(error) {
   console.error(`Failed to execute crawling script: ${error.message}`)
 }
 
-getActiveTab().then(() => {
-  const isISISCourseURL = checkURL()
-  if (!isISISCourseURL) {
-    showWrongPageContent()
-    return
-  }
-
-  scanForDocuments()
-  listenForCrawl()
-})
-
 browser.runtime.onMessage.addListener(message => {
   if (message.command === "scan-result") {
     document.querySelector("#resource-info-loading").classList.add("hidden")
@@ -76,8 +62,24 @@ browser.runtime.onMessage.addListener(message => {
 
       if (message.numberOfResources === 0) {
         document.querySelector("#crawl-button").disabled = true
-        preventCrawl = true
       }
     }
   }
+})
+
+document.querySelector(".info-icon").addEventListener("click", e => {
+  browser.tabs.create({
+    url: "../pages/information/information.html",
+  })
+})
+
+getActiveTab().then(() => {
+  const isISISCourseURL = checkURL()
+  if (!isISISCourseURL) {
+    showWrongPageContent()
+    return
+  }
+
+  scanForDocuments()
+  listenForCrawl()
 })
