@@ -61,10 +61,17 @@ html, body {
 
 .resource-info {
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .resource-info-number {
   font-weight: 600;
+}
+
+.resource-selection {
+  margin-top: 10px;
 }
 
 .download-info {

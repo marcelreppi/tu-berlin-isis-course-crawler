@@ -9,17 +9,21 @@ if (!window.scriptHasRun) {
   }
 
   function scanForResources(message) {
+    let nDocuments = 0
+    let nFolders = 0
     resourceNodes = []
     document.querySelectorAll("a").forEach(node => {
       if (node.href.startsWith("https://isis.tu-berlin.de/mod/resource/view.php?id=")) {
-        node.isResource = true
+        node.isDocument = true
         resourceNodes.push(node)
+        nDocuments++
         return
       }
 
       if (node.href.startsWith("https://isis.tu-berlin.de/mod/folder/view.php?id=")) {
         node.isFolder = true
         resourceNodes.push(node)
+        nFolders++
         return
       }
     })
@@ -27,6 +31,8 @@ if (!window.scriptHasRun) {
     browser.runtime.sendMessage({
       command: "scan-result",
       numberOfResources: resourceNodes.length,
+      nDocuments,
+      nFolders,
     })
   }
 
@@ -43,10 +49,13 @@ if (!window.scriptHasRun) {
     for (let i = 0; i < resourceNodes.length; i++) {
       const node = resourceNodes[i]
 
+      if (message.skipDocuments && node.isDocument) continue
+      if (message.skipFolders && node.isFolder) continue
+
       // Fetch the href to get the actual download URL
       const res = await fetch(node.href)
 
-      if (node.isResource) {
+      if (node.isDocument) {
         // Content script can't access downloads API -> send msg to background script
         browser.runtime.sendMessage({
           command: "download",
