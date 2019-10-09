@@ -1,0 +1,12 @@
+{
+  "addons": {
+    "{264338f3-2817-4635-8cc1-2682cc49bb5b}": {
+      "updates": [
+        {
+          "version": "1.4",
+          "update_link": "https://raw.githubusercontent.com/marcelreppi/tu-berlin-isis-course-crawler/master/dist/tu_berlin_isis_course_crawler-1.4-fx.xpi"
+        }
+      ]
+    }
+  }
+}
