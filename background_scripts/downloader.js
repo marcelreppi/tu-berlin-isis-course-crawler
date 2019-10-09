@@ -42,3 +42,34 @@ browser.runtime.onMessage.addListener(message => {
     return
   }
 })
+
+function sendEvent(event) {
+  const now = new Date()
+  const isFirefox = typeof InstallTrigger !== "undefined"
+  fetch(
+    "https://e3hfofu2w1.execute-api.eu-central-1.amazonaws.com/default/tu-berlin-isis-course-crawler-event-tracker",
+    {
+      method: "POST",
+      mode: "no-cors",
+      body: JSON.stringify({
+        event,
+        date: now.toLocaleDateString("de-DE"),
+        time: now.toLocaleTimeString("de-DE"),
+        browser: isFirefox ? "firefox" : "chrome",
+      }),
+    }
+  )
+}
+
+browser.runtime.onInstalled.addListener(details => {
+  switch (details.reason) {
+    case "install":
+      sendEvent("install")
+      break
+    case "update":
+      sendEvent("update")
+      break
+    default:
+      break
+  }
+})

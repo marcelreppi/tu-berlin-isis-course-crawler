@@ -75,20 +75,6 @@ function sendEvent(event) {
 
 sendEvent("pageview")
 
-browser.runtime.onInstalled.addListener(details => {
-  switch (details.reason) {
-    case "install":
-      sendEvent("install")
-      break
-    case "update":
-      sendEvent("update")
-      break
-    default:
-      break
-  }
-  sendEvent("install")
-})
-
 browser.runtime.onMessage.addListener(message => {
   if (message.command === "scan-result") {
     document.querySelector("#resource-info-loading").classList.add("hidden")
