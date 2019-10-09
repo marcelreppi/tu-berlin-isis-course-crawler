@@ -71,3 +71,7 @@ html, body {
   display: flex;
   align-items: center;
 }
+
+.version {
+  margin-right: 5px;
+}
