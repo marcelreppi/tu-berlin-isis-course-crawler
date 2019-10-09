@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "TU Berlin ISIS Course Crawler",
-  "version": "1.3",
+  "version": "1.4",
   "description": "Crawls a TU Berlin ISIS course for available resources (PDF documents, etc.) and allows the user to download them all at once.",
   "homepage_url": "https://github.com/marcelreppi/tu-berlin-isis-course-crawler",
   "icons": {
@@ -27,5 +27,10 @@
   ],
   "background": {
     "scripts": ["./browser-polyfill.js", "./background_scripts/downloader.js"]
+  },
+  "applications": {
+    "gecko": {
+      "update_url": "https://raw.githubusercontent.com/marcelreppi/tu-berlin-isis-course-crawler/master/update.json"
+    }
   }
 }
