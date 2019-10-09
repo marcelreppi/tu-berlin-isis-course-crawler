@@ -5,6 +5,10 @@
         {
           "version": "1.4",
           "update_link": "https://raw.githubusercontent.com/marcelreppi/tu-berlin-isis-course-crawler/master/dist/tu_berlin_isis_course_crawler-1.4-fx.xpi"
+        },
+        {
+          "version": "1.5",
+          "update_link": "https://raw.githubusercontent.com/marcelreppi/tu-berlin-isis-course-crawler/master/dist/tu_berlin_isis_course_crawler-1.5-fx.xpi"
         }
       ]
     }
