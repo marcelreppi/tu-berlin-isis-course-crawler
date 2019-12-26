@@ -17,9 +17,15 @@ browser.runtime.onInstalled.addListener(details => {
         .then(() => {
           sendEvent("install")
         })
+      browser.tabs.create({
+        url: "/pages/install/install.html",
+      })
 
       break
     case "update":
+      browser.tabs.create({
+        url: "/pages/update/update.html",
+      })
       sendEvent("update")
       break
     default:
