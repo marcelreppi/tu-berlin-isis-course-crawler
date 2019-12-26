@@ -28,13 +28,4 @@ export default {
 }
 </script>
 
-<style>
-.link {
-  color: blue;
-  text-decoration: underline;
-}
-
-.link:hover {
-  cursor: pointer;
-}
-</style>
+<style></style>

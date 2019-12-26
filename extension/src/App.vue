@@ -16,24 +16,43 @@
     </div>
 
     <div class="footer">
-      <span>
-        Inofficial Plugin by
-        <span class="link" @click="() => navigateTo('https://twitter.com/marcelreppi')">
-          marcelreppi
+      <div class="mb-row footer-row">
+        <span>
+          Please consider switching to
+          <span
+            class="link"
+            @click="() => navigateTo('https://github.com/marcelreppi/moodle-buddy')"
+          >
+            Moodle Buddy
+          </span>
         </span>
-      </span>
-      <span>
-        <div class="link" @click="onDonateClick">Donate</div>
-      </span>
-      <span class="footer-right-section">
-        <div
-          class="link"
-          @click="() => navigateTo('https://github.com/marcelreppi/tu-berlin-isis-course-crawler')"
-        >
-          GitHub
-        </div>
-        <img class="info-icon" :src="InfoIcon" alt="info" @click="onInfoClick" />
-      </span>
+        <span>
+          More info
+          <span class="link" @click="onInfoClick">here</span>
+        </span>
+      </div>
+      <div class="footer-row">
+        <span>
+          Inofficial Plugin by
+          <span class="link" @click="() => navigateTo('https://twitter.com/marcelreppi')">
+            marcelreppi
+          </span>
+        </span>
+        <span>
+          <div class="link" @click="onDonateClick">Donate</div>
+        </span>
+        <span class="footer-right-section">
+          <div
+            class="link"
+            @click="
+              () => navigateTo('https://github.com/marcelreppi/tu-berlin-isis-course-crawler')
+            "
+          >
+            GitHub
+          </div>
+          <img class="info-icon" :src="InfoIcon" alt="info" @click="onInfoClick" />
+        </span>
+      </div>
     </div>
   </div>
 </template>
@@ -161,13 +180,22 @@ export default {
 }
 
 .footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin-top: 30px;
   font-size: 12px;
   font-weight: 500;
   color: #8f8f8f;
+}
+
+.mb-row {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .footer-right-section {
