@@ -1,0 +1,43 @@
+{
+  "name": "tu-berlin-isis-course-crawler",
+  "version": "1.0.0",
+  "author": "Marcel Reppenhagen",
+  "scripts": {
+    "start": "web-ext run -s ./build",
+    "dev": "npm run nuke && cross-env NODE_ENV=dev webpack --watch",
+    "build": "npm run nuke && cross-env NODE_ENV=production webpack",
+    "nuke": "rm -rf build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcelreppi/tu-berlin-isis-course-crawler"
+  },
+  "bugs": {
+    "url": "https://github.com/marcelreppi/tu-berlin-isis-course-crawler/issues"
+  },
+  "dependencies": {
+    "sha.js": "^2.4.11",
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.5",
+    "@babel/core": "^7.7.5",
+    "@babel/preset-env": "^7.7.6",
+    "babel-loader": "^8.0.6",
+    "copy-webpack-plugin": "^5.1.1",
+    "core-js": "^3.5.0",
+    "cross-env": "^6.0.3",
+    "css-loader": "^3.3.2",
+    "file-loader": "^5.0.2",
+    "image-webpack-loader": "^6.0.0",
+    "prettier": "1.19.1",
+    "terser-webpack-plugin": "^2.3.0",
+    "url-loader": "^3.0.0",
+    "vue-loader": "^15.7.2",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.11",
+    "web-ext": "^3.2.1",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  }
+}

@@ -12,7 +12,7 @@ html, body {
   justify-content: center;
   align-items: center;
   padding: 5px 20px; 
-  max-width: 1000px
+  width: 600px
 }
 
 .title {
@@ -39,13 +39,10 @@ html, body {
   font-size: 18px;
   font-weight: bold;
   text-decoration: underline;
-  margin-bottom: 5px; 
 }
 
 .section-content {
   margin-bottom: 15px;
-  display: flex;
-  flex-direction: column;
 }
 
 .footer {
@@ -54,7 +51,6 @@ html, body {
   margin-top: 30px;
   font-size: 14px;
   width: 100%;
-  font-weight: 500;
   color: #8f8f8f;
 }
 
@@ -67,11 +63,30 @@ html, body {
   margin-bottom: 10px;
 }
 
+.version {
+  margin-right: 5px;
+}
+
 .footer-right-section {
   display: flex;
   align-items: center;
 }
 
-.version {
-  margin-right: 5px;
+.feedback-title {
+  font-weight: bold;
+  text-decoration: underline;
+  margin-bottom: 5px;
+}
+
+.center {
+  text-align: center;
+}
+
+.link {
+  color: blue;
+  text-decoration: underline;
+}
+
+.link:hover {
+  cursor: pointer;
 }

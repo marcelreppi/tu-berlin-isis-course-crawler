@@ -3,7 +3,7 @@ html, body {
   font-weight: 300;
   font-size: 16px;
   display: flex;
-  justify-content: center;
+  justify-content: center; 
 }
 
 .container {
@@ -12,7 +12,8 @@ html, body {
   justify-content: center;
   align-items: center;
   padding: 5px 20px; 
-  width: 600px
+  min-width: 500px;
+  max-width: 1000px
 }
 
 .title {
@@ -39,10 +40,13 @@ html, body {
   font-size: 18px;
   font-weight: bold;
   text-decoration: underline;
+  margin-bottom: 5px; 
 }
 
 .section-content {
   margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
 }
 
 .footer {
@@ -51,6 +55,7 @@ html, body {
   margin-top: 30px;
   font-size: 14px;
   width: 100%;
+  font-weight: 500;
   color: #8f8f8f;
 }
 
@@ -63,22 +68,11 @@ html, body {
   margin-bottom: 10px;
 }
 
-.legal-link:hover {
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.version {
-  margin-right: 5px;
-}
-
 .footer-right-section {
   display: flex;
   align-items: center;
 }
 
-.feedback-title {
-  font-weight: bold;
-  text-decoration: underline;
-  margin-bottom: 5px;
+.version {
+  margin-right: 5px;
 }

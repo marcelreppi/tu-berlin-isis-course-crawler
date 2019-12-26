@@ -1,3 +1,11 @@
-*.zip
+node_modules
 events
+.cache
+build
+
+
+*.zip
 *.txt
+*.stackdump
+
+env.js

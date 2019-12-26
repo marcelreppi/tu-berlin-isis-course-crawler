@@ -1,6 +1,6 @@
 {
   "addons": {
-    "{264338f3-2817-4635-8cc1-2682cc49bb5b}": {
+    "browser_specific_settings": {
       "updates": [
         {
           "version": "1.4",

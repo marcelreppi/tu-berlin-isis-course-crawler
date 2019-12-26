@@ -21,12 +21,19 @@
   },
   "content_scripts": [
     {
-      "matches": ["*://isis.tu-berlin.de/*"],
-      "js": ["./browser-polyfill.js", "./content_scripts/crawler.js"]
+      "matches": ["*://isis.tu-berlin.de/course/view.php?id=*"],
+      "js": ["./shared/browser-polyfill.js", "./content_scripts/coursePage.js"]
     }
   ],
   "background": {
-    "scripts": ["./browser-polyfill.js", "./background_scripts/downloader.js"]
+    "scripts": [
+      "./shared/browser-polyfill.js",
+      "./background_scripts/extension-listener.js",
+      "./background_scripts/downloader.js"
+    ]
+  },
+  "options_ui": {
+    "page": "./pages/options/options.html"
   },
   "applications": {
     "gecko": {
