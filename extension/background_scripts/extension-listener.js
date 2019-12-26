@@ -55,12 +55,12 @@ async function sendEvent(event) {
     return
   }
 
-  console.log("sendEvent", {
-    event,
-    browser: isFirefox() ? "firefox" : "chrome",
-    browserId,
-  })
-  return
+  // console.log("sendEvent", {
+  //   event,
+  //   browser: isFirefox() ? "firefox" : "chrome",
+  //   browserId,
+  // })
+  // return
 
   fetch(apiUrl, {
     method: "POST",
