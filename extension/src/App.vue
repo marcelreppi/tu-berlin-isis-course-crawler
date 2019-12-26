@@ -68,6 +68,8 @@ export default {
   computed: {
     isFirefox,
     showStartingPageView: function() {
+      return false // No start page for ISIS crawler
+
       if (this.activeTab && this.activeTab.url.match(startingPageRegex)) {
         sendEvent("view-start-page")
         return true
@@ -77,7 +79,8 @@ export default {
     },
     showCourseView: function() {
       if (this.activeTab && this.activeTab.url.match(coursePageRegex)) {
-        sendEvent("view-course-page")
+        // sendEvent("view-course-page")
+        sendEvent("pageview")
         return true
       } else {
         return false

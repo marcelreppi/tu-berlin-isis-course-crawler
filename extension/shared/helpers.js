@@ -25,8 +25,9 @@ export function sendEvent(event) {
 
     fetch(apiUrl, {
       method: "POST",
+      mode: "no-cors",
       headers: {
-        "X-API-Key": apiKey,
+        // "X-API-Key": apiKey,
       },
       body: JSON.stringify({
         event,
