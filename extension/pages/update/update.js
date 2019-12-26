@@ -6,3 +6,9 @@ document.querySelectorAll(".mb-link").forEach(link => {
     })
   })
 })
+
+document.querySelector("#imprint-link").addEventListener("click", e => {
+  browser.tabs.create({
+    url: "/pages/legal/legal.html",
+  })
+})
