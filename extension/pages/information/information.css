@@ -45,6 +45,33 @@ html, body {
   margin-bottom: 15px;
 }
 
+.mb-info {
+  margin-bottom: 30px;
+}
+
+.mb-intro {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+  padding: 20px 0px;
+  border-radius: 5px;
+  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); */
+}
+
+.mb-intro > h2 {
+  margin: 0;
+}
+
+.even-row {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10px;
+}
+
+img {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
 .footer {
   display: flex;
   flex-direction: column;
