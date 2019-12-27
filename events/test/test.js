@@ -1,14 +1,14 @@
-const { writeEventToS3 } = require("../lambda/tracker")
+const { sendBotMessage } = require("../lambda/tracker")
 
 const testEvent = {
-  event: "update",
-  browser: "firefox",
-  browserId: "asdasdasdasdasdasdasd",
-  test: true
+  event: "testevent",
+  browser: "vscode",
+  browserId: "testbrowserid",
+  dev: true,
 }
 
 const test = async () => {
-  const res = await writeEventToS3(testEvent, true)
+  const res = await sendBotMessage(testEvent)
   console.log(res)
 }
 

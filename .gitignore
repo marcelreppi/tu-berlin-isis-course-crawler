@@ -9,5 +9,4 @@ raw
 *.zip
 *.txt
 *.stackdump
-
-env.js
+*.env
