@@ -1,5 +1,11 @@
 # TU Berlin ISIS Course Crawler
 
+!!! This Browser Plugin is outdated and will not receive any further updates !!!
+
+!!! Please consider checking out [Moodle Buddy](https://github.com/marcelreppi/moodle-buddy/) !!!
+
+---
+
 You are a student at TU Berlin? </br>
 You frequently use the ISIS system to access course material?  </br>
 You are tired of downloading every file one at a time?
