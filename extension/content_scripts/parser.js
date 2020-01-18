@@ -34,9 +34,11 @@ export function parseFilenameFromCourse(aTag) {
 }
 
 export function parseFilenameFromPluginfileURL(url) {
-  return url
+  const fileName = url
     .split("/")
     .pop() // Take last part of URL
     .split("?")
     .shift() // Take everything before query parameters
+
+  return decodeURI(fileName)
 }

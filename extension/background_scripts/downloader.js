@@ -15,10 +15,8 @@ browser.runtime.onMessage.addListener(message => {
     const filenameParts = filename.split(".")
     const fileType = filenameParts[filenameParts.length - 1]
 
-    if (message.useMoodleFilename) {
-      const moodleFilename = sanitizeFilename(message.moodleFilename)
-      filename = `${moodleFilename}.${fileType}`
-    }
+    const moodleFilename = sanitizeFilename(message.moodleFilename)
+    filename = `${moodleFilename}.${fileType}`
 
     if (message.prependCourseToFilename) {
       filename = `${courseName}_${filename}`
@@ -30,7 +28,7 @@ browser.runtime.onMessage.addListener(message => {
 
     browser.downloads.download({
       url: message.url,
-      filename,
+      filename: `${courseName}/${filename}`,
     })
     return
   }
@@ -46,7 +44,7 @@ browser.runtime.onMessage.addListener(message => {
     }
     browser.downloads.download({
       url: message.url,
-      filename,
+      filename: `${courseName}/${filename}`,
     })
     return
   }
@@ -63,7 +61,7 @@ browser.runtime.onMessage.addListener(message => {
     }
     browser.downloads.download({
       url: message.url,
-      filename,
+      filename: `${courseName}/${filename}`,
     })
     return
   }

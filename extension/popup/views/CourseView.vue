@@ -55,12 +55,12 @@
       </div>
 
       <div>
-        <div>
+        <!-- <div>
           <label>
             <input type="checkbox" ref="useMoodleFilenameCb" v-model="useMoodleFilename" />
             <span class="checkbox-label">Use Moodle file name as actual file name</span>
           </label>
-        </div>
+        </div> -->
         <div>
           <label>
             <input type="checkbox" v-model="prependCourseShortcutToFilename" />
