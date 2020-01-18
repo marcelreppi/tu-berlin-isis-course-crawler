@@ -2,7 +2,9 @@
 
 !!! This Browser Plugin is outdated and will not receive any further updates !!!
 
-!!! Please consider checking out [Moodle Buddy](https://github.com/marcelreppi/moodle-buddy/) !!!
+!!! There is an updated version with a lot more features called **Moodle Buddy** !!!
+
+**!!! Download Moodle Buddy for [Firefox](https://addons.mozilla.org/en-US/firefox/addon/moodle-buddy/) or [Chrome](https://chrome.google.com/webstore/detail/moodle-buddy/nomahjpllnbcpbggnpiehiecfbjmcaeo) !!!**
 
 ---
 
