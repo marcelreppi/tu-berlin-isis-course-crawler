@@ -21,7 +21,7 @@
           Please consider switching to
           <span
             class="link"
-            @click="() => navigateTo('https://github.com/marcelreppi/moodle-buddy')"
+            @click="() => navigateTo('/pages/information/information.html')"
           >
             Moodle Buddy
           </span>
